@@ -34,13 +34,13 @@ Bice Race — это приложение, в котором пользоват�
 
 ### Запуск приложения
 
-npm i
+-npm i
 
-Запустить терманал Redis
+-Запустить терманал Redis
 
-npx sequelize db:create
+-npx sequelize db:create
 
-npx sequelize db:migrate
+-npx sequelize db:migrate
 
-npm start
+-npm start
 
