@@ -1,5 +1,5 @@
 # bike_riding
-Bike race
+Bike riding
 Веб-приложение для составления маршрута велопрогулок
 Используемые технологии: HTML, CSS, Ajax, REST API Express.js, Node.js, PostgreSQL(Sequelize-cli), cookie + Redis, Yandex Maps Api, Bootstrap, Handlebars(hbs)
 
