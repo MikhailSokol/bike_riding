@@ -8,17 +8,19 @@ require('dotenv').config();
 
 // Импортируем созданный в отдельный файлах рутеры.
 const redis = require('redis');
-const RedisStore = require('connect-redis')(session);
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/user');
-const waysRouter = require('./routes/way.js');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 // подключаем БД базы для хранения кукисов (session storage) Используем базу данных Redis v3
 
 const redisClient = redis.createClient();
-
+redisClient.on('error', (err) => {
+  console.log(`Error ${err}`);
+});
+const RedisStore = require('connect-redis')(session);
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/user');
+const waysRouter = require('./routes/way');
 // Сообщаем express, что в качестве шаблонизатора используется "hbs".
 app.set('view engine', 'hbs');
 // Сообщаем express, что шаблона шаблонизаторая (вью) находятся в папке "ПапкаПроекта/views".
@@ -50,7 +52,7 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 
-//  сохраняем в обьект res.locals.username имя пользователя для использования username в hbs
+// сохраняем в обьект res.locals.username имя пользователя для использования username в hbs
 // app.use(userMiddleware);
 
 //  сохраняем в обьект res.locals.username имя пользователя для использования username в layout.hbs
